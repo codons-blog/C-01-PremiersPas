@@ -2,7 +2,7 @@ library(ggplot2)
 library(patchwork)
 library(tidyverse)
 
-d1 <- read.csv("questionnaire_atelier_codons_01.csv", sep=";")
+d1 <- read.csv("questionnaire/questionnaire_atelier_codons_01.csv", sep=";")
 
 q1 <- d1[1:4, ]
 
@@ -48,7 +48,7 @@ p3 <- ggplot(data = q3,
   scale_fill_continuous(low = "white", high = "#66c1bf") +
   geom_text(aes(x = Note, y = rev(Intitule), label = Nombre),
             colour = "#275662", size = 3)  +
-  labs(title = "Donnez une note aux items suivants entre 1 (très mauvais) et 5 (très bien)", 
+  labs(title = "Donnez une note aux items suivants entre\n1 (très mauvais) et 5 (très bien)", 
        y = "") +
   theme_minimal() +
   theme(panel.grid = element_blank(),
@@ -57,7 +57,24 @@ p3 <- ggplot(data = q3,
         axis.title.x = element_blank(),
         axis.text.y = element_text(colour = "#275662", size = 8))
 
-p <- p1 + p2 + p3 +
-  plot_layout(ncol = 2)
+p4 <- ggplot() +
+  geom_text(aes(x = 0.5, y = 9.5, label = "Points positifs"), colour = "#275662", hjust = 0, size = 3) +
+  geom_text(aes(x = 0.5, y = 9, label = "- Format tutoriel / durée de l'atelier"), colour = "black", hjust = 0, size = 3) +
+  geom_text(aes(x = 0.5, y = 8.5, label = "- Ambiance constructive et bienveillante"), colour = "black", hjust = 0, size = 3) +
+  geom_text(aes(x = 0.5, y = 8, label = "- Disponibilité des animateurs"), colour = "black",  hjust = 0, size = 3) +
+  geom_text(aes(x = 0.5, y = 6, label = "Points à améliorer"), colour = "#275662", hjust = 0, size = 3) +
+  geom_text(aes(x = 0.5, y = 5.5, label = "- Passer plus de temps sur les bases de R"), colour = "black", hjust = 0, size = 3) +
+  geom_text(aes(x = 0.5, y = 5, label = "- Démonstrations au fur et à mesure"), colour = "black", hjust = 0, size = 3) +
+  geom_text(aes(x = 0.5, y = 4.5, label = "- Suivi plus personnalisé"), colour = "black",  hjust = 0, size = 3) +
+  xlim(0, 10) +
+  ylim(4, 10) +
+  theme_void()
 
-ggsave("reponses.png", p, dpi = 320, width = 12, height = 6)
+p <- p1 + p2 + p3 + p4 +
+  plot_layout(ncol = 2) +
+  plot_annotation(title = "Ateliers codons! - 01 - Premiers pas avec R et RStudio",
+                  subtitle = "Lundi 09/05/2022",
+                  theme = theme(plot.title = element_text(colour = "#275662", hjust = 0.5),
+                                plot.subtitle = element_text(colour = "#275662", hjust = 0.5)))
+
+ggsave("questionnaire/reponses.png", p, dpi = 320, width = 12, height = 6)
