@@ -1,4 +1,4 @@
-studyName,Sample Number,Species,Island,Individual ID,Culmen Length (mm),Culmen Depth (mm),Flipper Length (mm),Body Mass (g)
+etudeNumero,Echantillon Numero,Espece,Ile,ID Individu,Longueur Bec (mm),Hauteur Bec (mm),Longueur Aile (mm),Masse corporelle (g)
 PAL0708,1,Adelie Penguin (Pygoscelis adeliae),Torgersen,N1A1,39.1,18.7,181,3750
 PAL0708,2,Adelie Penguin (Pygoscelis adeliae),Torgersen,N1A2,39.5,17.4,186,3800
 PAL0708,3,Adelie Penguin (Pygoscelis adeliae),Torgersen,N2A1,40.3,18,195,3250
